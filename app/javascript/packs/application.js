@@ -14,7 +14,7 @@ import "@popperjs/core"
 import "../stylesheets/application"
 
 import 'jquery'
-import 'jquery-ujs'
+//import 'jquery-ujs'
 
 Rails.start()
 Turbolinks.start()
