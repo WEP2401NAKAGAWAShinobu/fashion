@@ -1,0 +1,70 @@
+<h1>登録した服の一覧</h1>
+
+<div class="category">
+  <h2>トップス</h2>
+  <div class="row">
+    <% @tops.each do |cloth| %>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <%= link_to cloth_path(cloth) do %>
+            <%= image_tag cloth.image, class: 'card-img-top' if cloth.image.attached? %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= cloth.name %></h5>
+            <p class="card-text"><%= cloth.description %></p>
+            <div class="d-flex justify-content-end mt-3">
+              <%= link_to '編集', edit_cloth_path(cloth), class: 'btn btn-primary mr-2' %>
+              <%= button_to '削除', cloth, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="category">
+  <h2>ボトムス</h2>
+  <div class="row">
+    <% @bottoms.each do |cloth| %>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <%= link_to cloth_path(cloth) do %>
+            <%= image_tag cloth.image, class: 'card-img-top' if cloth.image.attached? %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= cloth.name %></h5>
+            <p class="card-text"><%= cloth.description %></p>
+            <div class="d-flex justify-content-end mt-3">
+              <%= link_to '編集', edit_cloth_path(cloth), class: 'btn btn-primary mr-2' %>
+              <%= button_to '削除', cloth, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="category">
+  <h2>靴</h2>
+  <div class="row">
+    <% @shoes.each do |cloth| %>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <%= link_to cloth_path(cloth) do %>
+            <%= image_tag cloth.image, class: 'card-img-top' if cloth.image.attached? %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= cloth.name %></h5>
+            <p class="card-text"><%= cloth.description %></p>
+            <div class="d-flex justify-content-end mt-3">
+              <%= link_to '編集', edit_cloth_path(cloth), class: 'btn btn-primary mr-2' %>
+              <%= button_to '削除', cloth, method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

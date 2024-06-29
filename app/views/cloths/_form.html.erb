@@ -1,0 +1,34 @@
+<%= form_with(model: @cloth, local: true) do |form| %>
+  <% if @cloth.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cloth.errors.count, "error") %>が発生しました:</h2>
+      <ul>
+      <% @cloth.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, '名前' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category, 'カテゴリ' %>
+    <%= form.select :category, options_for_select(Cloth.categories.map { |key, value| [I18n.t("activerecord.attributes.cloth.categories.#{key}"), key] }, @cloth.category), {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image, '画像' %>
+    <%= form.file_field :image, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :description, '備考' %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <%= form.submit '登録', class: 'btn btn-primary' %>
+<% end %>

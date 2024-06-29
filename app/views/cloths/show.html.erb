@@ -1,0 +1,11 @@
+<h1>服の詳細</h1>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @cloth.name %></h5>
+    <p class="card-text"><strong>カテゴリ:</strong> <%= @cloth.category %></p>
+    <%= image_tag @cloth.image, class: 'card-img-top' if @cloth.image.attached? %>
+    <p class="card-text"><strong>備考:</strong> <%= @cloth.description %></p>
+    <%= link_to '一覧に戻る', cloths_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

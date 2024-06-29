@@ -1,0 +1,71 @@
+<h1>コーディネート履歴</h1>
+
+<% @coordinates.each_with_index do |coordinate, index| %>
+  <div class="coordinate mb-4">
+    <h2>コーディネート <%= index + 1 %></h2> <!-- IDの代わりにインデックスを表示 -->
+    <p><%= coordinate.memo %></p>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-4">
+        <div class="card text-center">
+          <h2>トップス</h2>
+          <% tops = coordinate.cloths.find_by(category: 'tops') %>
+          <% if tops %>
+            <%= link_to cloth_coordinate_path(coordinate) do %>
+              <%= image_tag(tops.image, class: 'card-img-top mx-auto d-block') if tops.image.attached? %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= tops.name %></h5>
+              <p class="card-text"><%= tops.description %></p>
+            </div>
+          <% else %>
+            <p>トップスが登録されていません。</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card text-center">
+          <h2>ボトムス</h2>
+          <% bottoms = coordinate.cloths.find_by(category: 'bottoms') %>
+          <% if bottoms %>
+            <%= link_to cloth_coordinate_path(coordinate) do %>
+              <%= image_tag(bottoms.image, class: 'card-img-top mx-auto d-block') if bottoms.image.attached? %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= bottoms.name %></h5>
+              <p class="card-text"><%= bottoms.description %></p>
+            </div>
+          <% else %>
+            <p>ボトムスが登録されていません。</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card text-center">
+          <h2>靴</h2>
+          <% shoes = coordinate.cloths.find_by(category: 'shoes') %>
+          <% if shoes %>
+            <%= link_to cloth_coordinate_path(coordinate) do %>
+              <%= image_tag(shoes.image, class: 'card-img-top mx-auto d-block') if shoes.image.attached? %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= shoes.name %></h5>
+              <p class="card-text"><%= shoes.description %></p>
+            </div>
+          <% else %>
+            <p>靴が登録されていません。</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <%= button_to 'コーディネートを削除する', cloth_coordinate_path(coordinate), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= link_to '服一覧に戻る', cloths_path, class: 'btn btn-secondary' %>

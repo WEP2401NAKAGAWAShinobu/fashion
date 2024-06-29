@@ -1,0 +1,60 @@
+<h1>コーディネート詳細</h1>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">メモ: <%= @coordinate.memo %></h5>
+    
+    <% tops = @coordinate.cloths.where(category: 'tops').first %>
+    <% bottoms = @coordinate.cloths.where(category: 'bottoms').first %>
+    <% shoes = @coordinate.cloths.where(category: 'shoes').first %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-4">
+        <div class="card text-center">
+          <h2>トップス</h2>
+          <% if tops %>
+            <%= image_tag(tops.image, class: 'card-img-top mx-auto d-block') if tops.image.attached? %>
+            <div class="card-body">
+              <h5 class="card-title"><%= tops.name %></h5>
+              <p class="card-text"><%= tops.description %></p>
+            </div>
+          <% else %>
+            <p>トップスが登録されていません。</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card text-center">
+          <h2>ボトムス</h2>
+          <% if bottoms %>
+            <%= image_tag(bottoms.image, class: 'card-img-top mx-auto d-block') if bottoms.image.attached? %>
+            <div class="card-body">
+              <h5 class="card-title"><%= bottoms.name %></h5>
+              <p class="card-text"><%= bottoms.description %></p>
+            </div>
+          <% else %>
+            <p>ボトムスが登録されていません。</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card text-center">
+          <h2>靴</h2>
+          <% if shoes %>
+            <%= image_tag(shoes.image, class: 'card-img-top mx-auto d-block') if shoes.image.attached? %>
+            <div class="card-body">
+              <h5 class="card-title"><%= shoes.name %></h5>
+              <p class="card-text"><%= shoes.description %></p>
+            </div>
+          <% else %>
+            <p>靴が登録されていません。</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <%= link_to 'コーディネート履歴に戻る', cloth_coordinates_path, class: 'btn btn-success' %>
+  </div>
+</div>

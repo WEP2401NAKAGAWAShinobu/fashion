@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    attributes:
+      cloth:
+        categories:
+          tops: トップス
+          bottoms: ボトムス
+          shoes: 靴
+    models:
+      cloth: 服
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました"
+        restrict_dependent_destroy:
+          has_one: "に関連付けられている%{record}があるため削除できません"
+          has_many: "に関連付けられている%{record}があるため削除できません"

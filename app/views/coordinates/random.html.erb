@@ -1,0 +1,64 @@
+<h1>今日の服はこれ！</h1>
+
+<div class="row justify-content-center">
+  <div class="col-md-4 mb-4">
+    <div class="card text-center">
+      <h2>トップス</h2>
+      <% if @tops %>
+        <%= link_to image_tag(@tops.image, class: 'card-img-top mx-auto d-block'), cloth_path(@tops) if @tops.image.attached? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @tops.name %></h5>
+          <p class="card-text"><%= @tops.description %></p>
+        </div>
+      <% else %>
+        <p>トップスが登録されていません。</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card text-center">
+      <h2>ボトムス</h2>
+      <% if @bottoms %>
+        <%= link_to image_tag(@bottoms.image, class: 'card-img-top mx-auto d-block'), cloth_path(@bottoms) if @bottoms.image.attached? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @bottoms.name %></h5>
+          <p class="card-text"><%= @bottoms.description %></p>
+        </div>
+      <% else %>
+        <p>ボトムスが登録されていません。</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-4">
+    <div class="card text-center">
+      <h2>靴</h2>
+      <% if @shoes %>
+        <%= link_to image_tag(@shoes.image, class: 'card-img-top mx-auto d-block'), cloth_path(@shoes) if @shoes.image.attached? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @shoes.name %></h5>
+          <p class="card-text"><%= @shoes.description %></p>
+        </div>
+      <% else %>
+        <p>靴が登録されていません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<h3>このコーディネートのメモ</h3>
+<%= form_with(model: @coordinate, url: coordinates_path, local: true, multipart: true) do |f| %>
+  <%= hidden_field_tag :tops_id, @tops.id %>
+  <%= hidden_field_tag :bottoms_id, @bottoms.id %>
+  <%= hidden_field_tag :shoes_id, @shoes.id %>
+
+  <div class="form-group">
+    <%= f.label :memo, 'メモ' %>
+    <%= f.text_area :memo, class: 'form-control' %>
+  </div>
+  <%= f.submit 'コーディネートを保存する', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to '服一覧に戻る', cloths_path, class: 'btn btn-secondary' %>
+<%= link_to 'コーディネート履歴を見る', cloth_coordinates_path, class: 'btn btn-success' %>

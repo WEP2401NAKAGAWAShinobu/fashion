@@ -1,0 +1,96 @@
+/* app/assets/stylesheets/application.scss */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif; /* 全体のフォントを設定 */
+}
+
+form {
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header {
+  background: #0680a89f;
+  padding: 5px 10px; /* ヘッダーのパディングを減らして高さを調整 */
+  text-align: none;
+  width: 100%;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.app-name {
+  text-align: left;
+  font-family: 'Pacifico', cursive; /* タイトルにお洒落なフォントを適用 */
+  font-size: 15px; /* タイトルの文字サイズを半分くらいに */
+}
+
+.navbar {
+  text-align: right; /* ナビゲーションバーのテキストを右揃えに */
+  background-color: #017a8b; /* お好みの背景色に変更 */
+}
+
+.nav-link {
+  color: #fff !important; /* テキスト色を白に固定 */
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* フレックスレイアウトを使用して水平配置 */
+}
+
+.navbar ul li {
+  margin: 0 10px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white; /* リンクの色を適宜調整 */
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+footer {
+  background: #8fd6e477;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-family: 'Pacifico', cursive; /* フッターにもお洒落なフォントを適用 */
+}
+
+.navbar .btn-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  color: inherit;
+  cursor: pointer;
+  display: inline;
+}
+
+@import "bootstrap";

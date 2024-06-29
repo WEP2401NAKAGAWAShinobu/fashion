@@ -1,0 +1,40 @@
+<h1>ユーザー登録</h1>
+
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :名前 %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :メールアドレス %><br>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :パスワード %><br>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :パスワード再確認 %><br>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "登録", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'ログインページへ戻る', login_path %>

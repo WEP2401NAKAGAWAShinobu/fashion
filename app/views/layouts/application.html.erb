@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Fashion</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+<head>
+  <title>fashion</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="bg-info text-white py-3">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="h3">クローゼットに眠っている衣類を使ってコーディネートを提案するアプリ</h1>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-info mt-3">
+        <div class="container">
+          <ul class="navbar-nav mr-auto">
+            <% if logged_in? %>
+              <li class="nav-item"><%= link_to '服の新規登録', new_cloth_path, class: 'nav-link text-white' %></li>
+              <li class="nav-item"><%= link_to '登録した服の一覧', cloths_path, class: 'nav-link text-white' %></li>
+              <li class="nav-item"><%= link_to 'コーディネート', random_coordinates_path, class: 'nav-link text-white' %></li>
+              <li class="nav-item"><%= link_to 'コーディネート履歴', cloth_coordinates_path, class: 'nav-link text-white' %></li>
+              <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link text-white' %></li>
+            <% if current_user&.admin? %>
+              <li class="nav-item"><%= link_to '管理者ページ', rails_admin_path, class: 'nav-link text-white' %></li>
+            <li><%current_user%></li>
+            <% end %>
+              <li class="nav-item"><%= button_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-link nav-link text-white', form: { style: 'display: inline;' } %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div class="container mt-5">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
     <%= yield %>
-  </body>
+  </div>
+  <footer class="bg-info text-white text-center py-3 mt-5">
+    <p>&copy; クローゼットに眠っている衣類を使ってコーディネートを提案するアプリ</p>
+  </footer>
+</body>
 </html>
+
+

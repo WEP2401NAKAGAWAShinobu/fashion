@@ -1,0 +1,18 @@
+<!-- app/views/sessions/admin_new.html.erb -->
+<h1>管理者ログイン</h1>
+
+<%= form_with url: admin_login_path, local: true do |form| %>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true %>
+  </div>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+  <div>
+    <%= form.submit 'ログイン' %>
+  </div>
+<% end %>
+
+<%= link_to '管理者ゲストログイン', admin_guest_login_path, method: :post %>
