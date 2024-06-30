@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post 'guest_login', to: 'sessions#guest_login'
   delete 'guest_logout', to: 'sessions#guest_logout'
 
-  get '*path', to: 'application#render505'
  
   resources :cloth_coordinates, only: [:index, :show, :destroy]
 
